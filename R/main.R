@@ -31,3 +31,11 @@ base_faster <- function(n) {
 head_faster <- function(n) {
     fillMatrix(n)
 }
+
+#' Same Speed
+#' 
+#' @param n size of matrix
+#' @export
+same_speed <- function(n) {
+    fillMatrix(n)
+}
