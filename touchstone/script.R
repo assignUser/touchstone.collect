@@ -39,8 +39,8 @@ run_bm(100, 30)
   # bench::mark(same_speed(100))$median[[1]] %>%
   #   as.numeric() %>%
   #   `*`(0.2) = 0.0001738771
-Sys.setenv(TC_DELAY = "0.0002")
-run_bm(100, 100)
+# Sys.setenv(TC_DELAY = "0.0002")
+# run_bm(100, 100)
 
 # Slow function, low reps
   # bench::mark(same_speed(5000))$median[[1]] %>%
@@ -60,8 +60,8 @@ run_bm(5000, 30)
   # bench::mark(same_speed(5000))$median[[1]] %>%
   #   as.numeric() %>%
   #   `*`(0.2) = 0.4349948
-Sys.setenv(TC_DELAY = "0.45")
-run_bm(5000, 100)
+# Sys.setenv(TC_DELAY = "0.45")
+# run_bm(5000, 100)
 
 # create artifacts used downstream in the GitHub Action
 touchstone::benchmarks_analyze()
