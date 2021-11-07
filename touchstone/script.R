@@ -2,6 +2,7 @@
 touchstone::refs_install()
 
 run_bm <- function(n, reps, id = glue::glue("_{n}x{reps}")) {
+  withr::local_options(usethis.quiet = TRUE)
   touchstone::benchmark_run_ref(
     expr_before_benchmark = library(touchstone.collect),
     "head_faster{id}" := head_faster(!!n),
