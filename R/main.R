@@ -2,23 +2,27 @@
 # n ~ 5000 = 2s
 # n ~ 10000 = 8s
 fillMatrix <- function(n) {
-  matrix <- matrix(0, n, n)
-  for (i in 1:n) {
-    for (j in 1:n) {
-      matrix[i, j] <- i*j
+    matrix <- matrix(0, n, n)
+    for (i in 1:n) {
+        for (j in 1:n) {
+            matrix[i, j] <- i * j
+        }
     }
-  }
-  return(matrix)
+    return(matrix)
 }
 
+#' This is faster on base branch
+#' @export
 base_faster <- function(n) {
-  fillMatrix(n)
+    fillMatrix(n)
 }
 
+#' This is faster on head branch.
 #' @importFrom magrittr %>%
+#' @export
 head_faster <- function(n) {
-  Sys.getenv("TC_DELAY") %>%
-    as.numerc() %>%
-    Sys.sleep()
-  fillMatrix(n)
+    Sys.getenv("TC_DELAY") %>%
+        as.numeric() %>%
+        Sys.sleep()
+    fillMatrix(n)
 }
