@@ -48,7 +48,7 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@master
       - name: Setup dependencies
-        uses: r-lib/actions/setup-r-dependencies@master
+        uses: r-lib/actions/setup-r-dependencies@7b33c047b62e312480dccff128409e7cf92e2460
         with:
           cache-version: 1
           extra-packages: |
