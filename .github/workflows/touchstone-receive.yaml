@@ -1,4 +1,4 @@
-name: Continuous Benchmarks (Receive)
+name: Get Data
 on: pull_request
 jobs:
   prepare:
@@ -52,7 +52,7 @@ jobs:
         with:
           cache-version: 1
           extra-packages: |
-            lorenzwalthert/touchstone
+            assignUser/touchstone
             ggplot2
             dplyr
             gert
@@ -76,17 +76,10 @@ jobs:
       - name: Save PR number
         run: |
           echo ${{ github.event.number }} > ./touchstone/pr-comment/NR
-      - uses: actions/upload-artifact@v2
-        with:
-          name: visual-benchmarks
-          path: touchstone/plots/
       - uses: actions/upload-artifact@v1
         with:
-          name: results
-          path: touchstone/pr-comment
-      - uses: actions/download-artifact@v1
-        with:
-          name: results
+          name: records
+          path: touchstone/records
       - name: comment PR
         run: cat touchstone/pr-comment/info.txt
       - uses: actions/upload-artifact@v2

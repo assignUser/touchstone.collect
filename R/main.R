@@ -11,14 +11,18 @@ fillMatrix <- function(n) {
     return(matrix)
 }
 
+#' This is faster on base branch
+#' @export
 base_faster <- function(n) {
     Sys.getenv("TC_DELAY") %>%
-        as.numerc() %>%
+        as.numeric() %>%
         Sys.sleep()
     fillMatrix(n)
 }
 
+#' This is faster on head branch.
 #' @importFrom magrittr %>%
+#' @export
 head_faster <- function(n) {
     fillMatrix(n)
 }

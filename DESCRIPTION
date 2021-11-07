@@ -4,9 +4,9 @@ Version: 0.0.0.9000
 Authors@R: 
      person(given = "Jacob",
              family = "Wujciak-Jens",
-             role = "aut",
+             role = "cre",
              email = "jacob@wujciak.de",
-             comment = c(ORCID = "0000-0002-7281-3989")))
+             comment = c(ORCID = "0000-0002-7281-3989"))
 Description: Collects benchmark data from github action runners.
 License: CC BY 4.0
 Encoding: UTF-8
