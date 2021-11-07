@@ -1,7 +1,7 @@
 name: Benchmark
 on: 
   schedule:
-    - cron: '10 * * * *'
+    - cron: '40 * * * *'
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -46,7 +46,6 @@ jobs:
       - name: Ensure base branch is fetched
         run: |
           git checkout -b feature # this is current ref. This is required for naming.
-          git branch main remotes/origin/main
       - name: Setup R
         uses: r-lib/actions/setup-r@master
       - name: Setup dependencies
