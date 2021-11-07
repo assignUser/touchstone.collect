@@ -2,7 +2,7 @@ name: Continuous Benchmarks (Receive)
 on: pull_request
 jobs:
   prepare:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     outputs:
       config: ${{ steps.read_touchstone_config.outputs.config }}
     steps:
