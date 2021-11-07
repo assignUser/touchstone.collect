@@ -12,12 +12,16 @@ fillMatrix <- function(n) {
 }
 
 #' This is faster on base branch
+#' 
+#' @param n size of matrix
 #' @export
 base_faster <- function(n) {
     fillMatrix(n)
 }
 
 #' This is faster on head branch.
+#' 
+#' @param n size of matrix
 #' @importFrom magrittr %>%
 #' @export
 head_faster <- function(n) {

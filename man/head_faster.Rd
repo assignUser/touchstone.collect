@@ -6,6 +6,9 @@
 \usage{
 head_faster(n)
 }
+\arguments{
+\item{n}{size of matrix}
+}
 \description{
 This is faster on head branch.
 }
