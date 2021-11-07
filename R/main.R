@@ -28,5 +28,6 @@ head_faster <- function(n) {
     Sys.getenv("TC_DELAY") %>%
         as.numeric() %>%
         Sys.sleep()
+        
     fillMatrix(n)
 }
