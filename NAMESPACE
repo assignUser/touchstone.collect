@@ -2,4 +2,5 @@
 
 export(base_faster)
 export(head_faster)
+export(same_speed)
 importFrom(magrittr,"%>%")
