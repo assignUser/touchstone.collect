@@ -30,3 +30,11 @@ head_faster <- function(n) {
         Sys.sleep()
     fillMatrix(n)
 }
+
+#' Same Speed
+#' 
+#' @param n size of matrix
+#' @export
+same_speed <- function(n) {
+    fillMatrix(n)
+}
