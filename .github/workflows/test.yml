@@ -1,0 +1,41 @@
+name: test
+
+on: workflow_dispatch
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get
+        run: |
+          now=$(date +%s) 
+          mkdir $now
+          cd $now
+          echo ::set-output name=time::"$now"
+          wget https://www.wikidata.org/wiki/Special:EntityData/Q42.json
+      - uses: actions/upload-artifact@v2
+        with:
+          name: data
+          path: ${{ steps.Get.outputs.time }}
+  save:
+    needs: fetch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up git user
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+      - name: Get data branch
+        run: |
+          git checkout -b data
+      - name: Download data
+        uses: actions/download-artifact@v2
+        with:
+          name: data
+      - name: push
+        run: |
+        git add .
+        git commit -m"add data"
+        git push
+      
+
