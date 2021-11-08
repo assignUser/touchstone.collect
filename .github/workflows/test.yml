@@ -32,10 +32,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: data
-      # - name: prepare
-      #   run: |
-      #     unzip data
-      #     rm data.zip
       - name: push
         run: |
           git add .

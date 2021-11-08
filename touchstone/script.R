@@ -33,7 +33,7 @@ run_bm(100, 5)
   #   as.numeric() %>%
   #   `*`(0.2) = 0.0001738771
 Sys.setenv(TC_DELAY = "0.0002")
-run_bm(100, 30)
+#un_bm(100, 30)
 
 # fast function, high reps
   # bench::mark(same_speed(100))$median[[1]] %>%
@@ -47,14 +47,14 @@ run_bm(100, 30)
   #   as.numeric() %>%
   #   `*`(0.2) = 0.4349948
 Sys.setenv(TC_DELAY = "0.45")
-run_bm(5000, 5)
+#run_bm(5000, 5)
 
 # Slow function, medium reps
   # bench::mark(same_speed(5000))$median[[1]] %>%
   #   as.numeric() %>%
   #   `*`(0.2) = 0.4349948
 Sys.setenv(TC_DELAY = "0.45")
-run_bm(5000, 30)
+#run_bm(5000, 30)
 
 # Slow function, high reps
   # bench::mark(same_speed(5000))$median[[1]] %>%

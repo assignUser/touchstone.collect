@@ -2,6 +2,8 @@ name: Benchmark
 on: 
   schedule:
     - cron: '13 * * * *'
+  workflow_dispatch:
+    
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -65,32 +67,41 @@ jobs:
             cat('removed package ', pkg, '.', sep = "")
           }
         shell: Rscript {0}
-      # - name: Checkout benchmarking repo
-      #   if: ${{ matrix.config.benchmarking_repo != ''}}
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: ${{ matrix.config.benchmarking_repo }}
-      #     ref: ${{ matrix.config.benchmarking_ref }}
-      #     path: ${{ matrix.config.benchmarking_path }}
+      - name: Create dir
+        run: |
+          now=$(date +%s)
+          mkdir $now
+          echo $now > now
       - name: Run benchmarks
         run: Rscript -e 'touchstone::activate("feature", "main"); touchstone::run_script("touchstone/script.R")'
-      # - name: Save PR number
-      #   run: |
-      #     echo ${{ github.event.number }} > ./touchstone/pr-comment/NR
+      - name: Move records
+        run: |
+          now=$(cat now)
+          mv touchstone/records/* $now/
       - uses: actions/upload-artifact@v2
         with:
-          name: records
-          path: touchstone/records
-      # - uses: actions/upload-artifact@v1
-      #   with:
-      #     name: results
-      #     path: touchstone/pr-comment
-      # - uses: actions/download-artifact@v1
-      #   with:
-      #     name: results
-      # - name: comment PR
-      #   run: cat touchstone/pr-comment/info.txt
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     name: pr
-      #     path: touchstone/pr-comment/
+          name: data
+          path: 16*
+  save:
+    needs: fetch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+           ref: data
+      - name: Set up git user
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+      - name: Download data
+        uses: actions/download-artifact@v2
+        with:
+          name: data
+      - name: push
+        run: |
+          git add .
+          git commit -m"add data"
+          git push
+        
+
