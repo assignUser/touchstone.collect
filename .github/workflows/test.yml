@@ -11,12 +11,11 @@ jobs:
           now=$(date +%s) 
           mkdir $now
           cd $now
-          echo ::set-output name=time::"$now"
           wget https://www.wikidata.org/wiki/Special:EntityData/Q42.json
       - uses: actions/upload-artifact@v2
         with:
           name: data
-          path: ${{ steps.Get.outputs.time }}/
+          path: 16*
   save:
     needs: fetch
     runs-on: ubuntu-latest
