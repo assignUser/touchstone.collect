@@ -34,8 +34,8 @@ jobs:
           name: data
       - name: push
         run: |
-        git add .
-        git commit -m"add data"
-        git push
-      
+          git add .
+          git commit -m"add data"
+          git push
+        
 
