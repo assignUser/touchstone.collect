@@ -34,7 +34,7 @@ jobs:
           name: data
       - name: prepare
         run: |
-          unzip data.zip
+          unzip data
           rm data.zip
       - name: push
         run: |
