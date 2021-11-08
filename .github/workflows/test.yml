@@ -16,7 +16,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: data
-          path: ${{ steps.Get.outputs.time }}
+          path: ${{ steps.Get.outputs.time }}/
   save:
     needs: fetch
     runs-on: ubuntu-latest
