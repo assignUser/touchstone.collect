@@ -20,17 +20,22 @@ jobs:
     needs: fetch
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+           ref: data
       - name: Set up git user
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-      - name: Get data branch
-        run: |
-          git checkout -b data
       - name: Download data
         uses: actions/download-artifact@v2
         with:
           name: data
+      - name: prepare
+        run: |
+        unzip data.zip
+        rm data.zip
       - name: push
         run: |
           git add .
