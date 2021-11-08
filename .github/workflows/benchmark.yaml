@@ -1,5 +1,7 @@
 name: Benchmark
-concurrency: ${{github.ref_name}}
+concurrency: 
+  group: ${{github.ref_name}}
+  cancel-in-progress: true
 on: 
   schedule:
     - cron: '13 * * * *'
