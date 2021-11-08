@@ -24,7 +24,7 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=config::$content"
-  build:
+  benchmark:
     needs: prepare
     runs-on: ${{ matrix.config.os }}
     strategy:
@@ -83,7 +83,7 @@ jobs:
           name: data
           path: 16*
   save:
-    needs: fetch
+    needs: benchmark
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
