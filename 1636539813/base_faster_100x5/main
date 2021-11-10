@@ -1,0 +1,6 @@
+"elapsed" "iteration" "ref" "block" "name"
+0.000832664081826806 1 "main" 1 "base_faster_100x5"
+0.000835863989777863 1 "main" 2 "base_faster_100x5"
+0.000826062983833253 1 "main" 3 "base_faster_100x5"
+0.000773858977481723 1 "main" 4 "base_faster_100x5"
+0.000738456030376256 1 "main" 5 "base_faster_100x5"
